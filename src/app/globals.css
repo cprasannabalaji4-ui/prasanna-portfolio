@@ -42,3 +42,98 @@ html {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.4; }
 }
+
+/* ===== RESPONSIVE ===== */
+
+/* Navbar */
+@media (max-width: 768px) {
+  .nav-links { display: none !important; }
+  .nav-wrap { padding: 1rem 1.2rem !important; }
+}
+
+/* Hero */
+@media (max-width: 768px) {
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    min-height: auto !important;
+  }
+  .hero-left {
+    padding: 3rem 1.5rem 2rem !important;
+    order: 2;
+  }
+  .hero-right {
+    order: 1;
+    min-height: 55vw !important;
+    max-height: 360px !important;
+  }
+  .hero-h1 { font-size: 44px !important; letter-spacing: -2px !important; }
+  .hero-photo {
+    height: 360px !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    object-position: top center !important;
+  }
+  .hero-stats { flex-wrap: wrap; gap: 10px !important; }
+  .hero-btns { flex-direction: column !important; }
+  .hero-btns button { width: 100% !important; }
+  .float-chip { display: none !important; }
+}
+
+/* Sections */
+@media (max-width: 768px) {
+  .section-wrap {
+    padding: 3rem 1.5rem !important;
+  }
+  .sec-h { font-size: 32px !important; letter-spacing: -1px !important; }
+}
+
+/* About */
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .stats-col {
+    flex-direction: row !important;
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 12px !important;
+  }
+  .stat-card-wrap { flex: 1 1 calc(33% - 12px) !important; }
+}
+
+/* Projects */
+@media (max-width: 768px) {
+  .proj-featured {
+    grid-template-columns: 1fr !important;
+  }
+  .proj-small {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .proj-small {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Skills */
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Experience */
+@media (max-width: 768px) {
+  .exp-card-inner {
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+}
+
+/* Footer */
+@media (max-width: 768px) {
+  .foot-big { font-size: 40px !important; letter-spacing: -2px !important; }
+  .foot-chips { flex-direction: column !important; align-items: center !important; }
+}
