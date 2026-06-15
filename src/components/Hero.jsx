@@ -43,7 +43,7 @@ export default function Hero() {
           }}>
             <div style={{ color: 'var(--text)' }}>PRASANNA</div>
             <div style={{ color: 'var(--accent)' }}>BALAJI</div>
-            <div style={{ color: 'var(--accent2)' }}>C.</div>
+            <div style={{ color: 'var(--accent2)' }}>C</div>
           </h1>
 
           {/* Desc */}
@@ -52,7 +52,7 @@ export default function Hero() {
             lineHeight: 1.8, maxWidth: 420, marginBottom: '2.5rem',
           }}>
             UI/UX Designer & Part-time Developer from{' '}
-            <strong style={{ color: 'var(--text)' }}>Erode, TN.</strong> I craft{' '}
+            <strong style={{ color: 'var(--text)' }}>Chennai, TN</strong> I craft{' '}
             <strong style={{ color: 'var(--text)' }}>bold, user-centered</strong>{' '}
             experiences — Figma to production.
           </p>

@@ -39,7 +39,7 @@ export default function Navbar() {
           color: 'var(--text)',
           letterSpacing: '-0.5px',
         }}>
-          Prasanna <span style={{ color: 'var(--accent)' }}>.</span>
+          Prasanna <span style={{ color: 'var(--accent)' }}></span>
         </div>
 
         {/* Desktop Links */}
