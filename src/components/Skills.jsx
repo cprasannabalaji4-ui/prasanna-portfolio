@@ -1,185 +1,490 @@
-const groups = [
+'use client'
+
+import {
+  FaFigma,
+  FaReact,
+  FaNodeJs,
+  FaGithub,
+} from 'react-icons/fa'
+
+import {
+  SiNextdotjs,
+  SiTailwindcss,
+  SiJavascript,
+  SiMongodb,
+  SiCanva,
+  SiFramer,
+} from 'react-icons/si'
+
+const categories = [
   {
-    icon: '🎨',
-    bg: '#EDE8FF',
-    title: 'Technical Skills',
-    tags: [
-      'UI/UX Design',
-      'Wireframing',
-      'Prototyping',
-      'User Flow',
-      'Graphic Design',
-      'MERN Stack',
-      'Blockchain',
-      'Digital Marketing'
+    id: '01',
+    title: 'UI / UX Design',
+    subtitle: 'Designing meaningful digital experiences',
+    color: '#7C3AED',
+
+    skills: [
+      {
+        icon: <FaFigma />,
+        name: 'Figma',
+        level: 98,
+      },
+      {
+        icon: <SiFramer />,
+        name: 'Framer',
+        level: 90,
+      },
+      {
+        icon: <SiCanva />,
+        name: 'Canva',
+        level: 92,
+      },
     ],
-    accent: true,
   },
+
   {
-    icon: '🛠️',
-    bg: '#FFE8F0',
-    title: 'Design Tools',
-    tags: [
-      'Figma',
-      'Framer',
-      'Canva',
-      'Overflow',
-      'Notion',
-      'VS Code'
+    id: '02',
+    title: 'Frontend Development',
+    subtitle: 'Building modern interfaces',
+
+    color: '#06B6D4',
+
+    skills: [
+      {
+        icon: <FaReact />,
+        name: 'React',
+        level: 92,
+      },
+      {
+        icon: <SiNextdotjs />,
+        name: 'Next.js',
+        level: 90,
+      },
+      {
+        icon: <SiJavascript />,
+        name: 'JavaScript',
+        level: 94,
+      },
+      {
+        icon: <SiTailwindcss />,
+        name: 'Tailwind',
+        level: 96,
+      },
     ],
-    accent: true,
   },
+
   {
-    icon: '💡',
-    bg: '#E8F5E9',
-    title: 'Personal Skills',
-    tags: [
-      'Creative Thinking',
-      'Design Thinking',
-      'Problem Solving',
-      'Team Work',
-      'Leadership',
-      'Punctuality'
+    id: '03',
+    title: 'Backend',
+    subtitle: 'Scalable applications',
+
+    color: '#10B981',
+
+    skills: [
+      {
+        icon: <FaNodeJs />,
+        name: 'Node.js',
+        level: 80,
+      },
+      {
+        icon: <SiMongodb />,
+        name: 'MongoDB',
+        level: 82,
+      },
+      {
+        icon: <FaGithub />,
+        name: 'GitHub',
+        level: 94,
+      },
     ],
-    accent: false,
-  },
-  {
-    icon: '🌐',
-    bg: '#FFF3E0',
-    title: 'Languages',
-    tags: [
-      'Tamil — Native',
-      'English — Intermediate'
-    ],
-    accent: false,
   },
 ]
 
 export default function Skills() {
+
+  const styles = {
+
+    section: {
+      background: '#070707',
+      color: '#fff',
+      minHeight: '100vh',
+      padding: '140px 6%',
+      position: 'relative',
+      overflow: 'hidden',
+      fontFamily: 'Inter,sans-serif',
+    },
+
+    container: {
+      maxWidth: '1450px',
+      margin: 'auto',
+    },
+
+    badge: {
+      display: 'inline-flex',
+      alignItems: 'center',
+      gap: 10,
+      padding: '8px 18px',
+      border: '1px solid rgba(255,255,255,.08)',
+      borderRadius: 100,
+      color: '#9ca3af',
+      fontSize: 12,
+      letterSpacing: 2,
+      textTransform: 'uppercase',
+      marginBottom: 35,
+      background: 'rgba(255,255,255,.03)',
+      backdropFilter: 'blur(20px)',
+    },
+
+    dot: {
+      width: 8,
+      height: 8,
+      borderRadius: '50%',
+      background: '#8B5CF6',
+    },
+
+    heading: {
+      fontSize: 'clamp(65px,8vw,120px)',
+      fontWeight: 900,
+      lineHeight: .9,
+      letterSpacing: '-5px',
+      margin: 0,
+    },
+
+    gradient: {
+      background:
+        'linear-gradient(90deg,#8B5CF6,#06B6D4)',
+
+      WebkitBackgroundClip: 'text',
+
+      color: 'transparent',
+    },
+
+    intro: {
+      width: 600,
+      maxWidth: '100%',
+      color: '#9CA3AF',
+      fontSize: 18,
+      marginTop: 30,
+      lineHeight: 1.9,
+    },
+
+    grid: {
+      display: 'grid',
+      gridTemplateColumns:
+        'repeat(auto-fit,minmax(380px,1fr))',
+      gap: 30,
+      marginTop: 90,
+    },
+
+  }
+
   return (
+
     <section
       id="skills"
-      className="section-wrap"
+      style={styles.section}
+    >
+
+      <div style={styles.container}>
+
+        <div style={styles.badge}>
+
+          <div style={styles.dot} />
+
+          SKILLS & EXPERTISE
+
+        </div>
+
+        <h2 style={styles.heading}>
+
+          Building
+          <br />
+
+          <span style={styles.gradient}>
+            Digital Products
+          </span>
+
+        </h2>
+
+        <p style={styles.intro}>
+
+          My expertise combines UI/UX Design,
+          Frontend Development and modern
+          technologies to build premium digital
+          experiences that are beautiful,
+          scalable and user-focused.
+
+        </p>
+
+        <div style={styles.grid}>
+          {categories.map((category) => (
+
+  <div
+    key={category.id}
+    style={{
+      position: 'relative',
+      overflow: 'hidden',
+
+      background:
+        'linear-gradient(145deg,rgba(255,255,255,.05),rgba(255,255,255,.02))',
+
+      border: '1px solid rgba(255,255,255,.08)',
+
+      borderRadius: 30,
+
+      padding: 35,
+
+      backdropFilter: 'blur(20px)',
+
+      transition: '.35s',
+    }}
+  >
+
+    {/* Top */}
+
+    <div
       style={{
-        padding: '5rem 3.5rem',
-        maxWidth: 1100,
-        margin: '0 auto',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: 45,
       }}
     >
-      <div
+
+      <span
         style={{
-          fontSize: 10,
+          color: category.color,
+          fontSize: 13,
           fontWeight: 700,
-          letterSpacing: '0.25em',
-          textTransform: 'uppercase',
-          color: 'var(--accent)',
-          marginBottom: '0.5rem',
+          letterSpacing: 2,
         }}
       >
-        03 — Skills
-      </div>
-
-      <h2
-        className="sec-h"
-        style={{
-          fontFamily: 'Syne, sans-serif',
-          fontSize: 48,
-          fontWeight: 800,
-          letterSpacing: '-2px',
-          color: 'var(--text)',
-          lineHeight: 1,
-          marginBottom: '3rem',
-        }}
-      >
-        What I <span style={{ color: 'var(--accent)' }}>Bring</span>
-      </h2>
+        {category.id}
+      </span>
 
       <div
-        className="skills-grid"
         style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: 20,
+          width: 55,
+          height: 55,
+          borderRadius: '50%',
+          background: `${category.color}15`,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: category.color,
+          fontSize: 22,
         }}
       >
-        {groups.map((g) => (
-          <div
-            key={g.title}
-            style={{
-              background: 'var(--white)',
-              borderRadius: 24,
-              padding: '2rem',
-              boxShadow:
-                '6px 6px 18px rgba(0,0,0,0.12), -4px -4px 14px rgba(255,255,255,0.95)',
-            }}
-          >
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 10,
-                marginBottom: '1.2rem',
-              }}
-            >
-              <div
-                style={{
-                  width: 36,
-                  height: 36,
-                  borderRadius: 10,
-                  background: g.bg,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontSize: 18,
-                }}
-              >
-                {g.icon}
-              </div>
-
-              <div
-                style={{
-                  fontFamily: 'Syne, sans-serif',
-                  fontSize: 16,
-                  fontWeight: 700,
-                  color: 'var(--text)',
-                }}
-              >
-                {g.title}
-              </div>
-            </div>
-
-            <div
-              style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: 8,
-              }}
-            >
-              {g.tags.map((tag) => (
-                <span
-                  key={tag}
-                  style={{
-                    fontSize: 12,
-                    fontWeight: 600,
-                    padding: '7px 16px',
-                    borderRadius: 50,
-                    background: g.accent
-                      ? 'rgba(91,79,232,0.06)'
-                      : 'var(--bg)',
-                    color: g.accent
-                      ? 'var(--accent)'
-                      : 'var(--muted)',
-                    boxShadow:
-                      '3px 3px 8px rgba(0,0,0,0.1), -3px -3px 8px rgba(255,255,255,0.95)',
-                  }}
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </div>
-        ))}
+        ✦
       </div>
+
+    </div>
+
+    {/* Heading */}
+
+    <h3
+      style={{
+        fontSize: 34,
+        margin: 0,
+        fontWeight: 800,
+        letterSpacing: '-1px',
+      }}
+    >
+      {category.title}
+    </h3>
+
+    <p
+      style={{
+        marginTop: 12,
+        color: '#9CA3AF',
+        lineHeight: 1.8,
+        fontSize: 15,
+      }}
+    >
+      {category.subtitle}
+    </p>
+
+    {/* Skills */}
+
+    <div
+      style={{
+        marginTop: 40,
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 24,
+      }}
+    >
+
+    {category.skills.map((skill, index) => (
+
+  <div
+    key={index}
+    style={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: 18,
+    }}
+  >
+
+    {/* Icon */}
+
+    <div
+      style={{
+        width: 55,
+        height: 55,
+        borderRadius: 18,
+
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+
+        fontSize: 24,
+
+        color: category.color,
+
+        background:
+          `${category.color}12`,
+
+        border:
+          `1px solid ${category.color}30`,
+
+        flexShrink: 0,
+      }}
+    >
+
+      {skill.icon}
+
+    </div>
+
+
+    {/* Content */}
+
+    <div
+      style={{
+        flex: 1,
+      }}
+    >
+
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+
+          marginBottom: 10,
+        }}
+      >
+
+        <span
+          style={{
+            fontSize: 15,
+            fontWeight: 600,
+            color: '#fff',
+          }}
+        >
+          {skill.name}
+        </span>
+
+
+        <span
+          style={{
+            fontSize: 13,
+            color: category.color,
+            fontWeight: 700,
+          }}
+        >
+          {skill.level}%
+        </span>
+
+
+      </div>
+
+
+      {/* Progress Bar */}
+
+      <div
+        style={{
+          height: 6,
+
+          width: '100%',
+
+          background:
+            'rgba(255,255,255,.08)',
+
+          borderRadius: 50,
+
+          overflow: 'hidden',
+        }}
+      >
+
+        <div
+          style={{
+            width: `${skill.level}%`,
+
+            height: '100%',
+
+            borderRadius: 50,
+
+            background:
+              `linear-gradient(90deg,
+              ${category.color},
+              rgba(255,255,255,.8))`,
+
+            transition:
+              'width 1s ease',
+          }}
+        />
+
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+))}
+
+    </div>
+
+
+    {/* Bottom Glow */}
+
+    <div
+      style={{
+        position: 'absolute',
+
+        width: 180,
+        height: 180,
+
+        right: -80,
+        bottom: -80,
+
+        borderRadius: '50%',
+
+        background:
+          category.color,
+
+        opacity: .12,
+
+        filter:
+          'blur(60px)',
+
+        pointerEvents: 'none',
+      }}
+    />
+
+
+  </div>
+
+))}
+
+        </div>
+
+      </div>
+
     </section>
+
   )
+
 }

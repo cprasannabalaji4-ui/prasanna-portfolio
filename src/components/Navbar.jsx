@@ -1,143 +1,191 @@
 'use client'
-import { useState } from 'react'
+
+import { useEffect, useState } from 'react'
+import styles from './Navbar.module.css'
+
+const navItems = [
+  { label: 'About', id: 'about' },
+  { label: 'Projects', id: 'projects' },
+  { label: 'Skills', id: 'skills' },
+  { label: 'Experience', id: 'experience' },
+]
+
+const CONTACT = {
+  phone: '+919790188656',
+  email: 'cprasannabalaji4@gmail.com',
+}
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
 
-  const scrollTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+  /* ===========================
+      Scroll To Section
+      (same pattern as Hero.jsx scrollToProjects)
+  =========================== */
+
+  const scrollToSection = (e, id) => {
+    e.preventDefault()
+
+    const section = document.getElementById(id)
+
+    if (!section) {
+      console.log(`${id} section not found`)
+      return
+    }
+
+    const navbarHeight = 90
+
+    const top =
+      section.getBoundingClientRect().top +
+      window.pageYOffset -
+      navbarHeight
+
+    window.scrollTo({
+      top,
+      behavior: 'smooth',
+    })
+
     setMenuOpen(false)
   }
 
-  const navItems = [
-    { label: 'About', id: 'about' },
-    { label: 'Projects', id: 'projects' },
-    { label: 'Skills', id: 'skills' },
-    { label: 'Experience', id: 'exp' },
-  ]
+  const scrollToTop = (e) => {
+    e.preventDefault()
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    })
+  }
+
+  /* ===========================
+      Scroll Detection (navbar bg)
+  =========================== */
+
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40)
+    }
+
+    onScroll()
+
+    window.addEventListener('scroll', onScroll)
+
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
     <>
-      <nav className="nav-wrap" style={{
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: '1.2rem 3rem',
-        background: 'rgba(245,243,238,0.88)',
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
-        position: 'sticky',
-        top: 0,
-        zIndex: 100,
-        borderBottom: '1px solid rgba(0,0,0,0.06)',
-      }}>
+      <header
+        className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}
+      >
         {/* Logo */}
-        <div style={{
-          fontFamily: 'Syne, sans-serif',
-          fontSize: 20,
-          fontWeight: 800,
-          color: 'var(--text)',
-          letterSpacing: '-0.5px',
-        }}>
-          Prasanna <span style={{ color: 'var(--accent)' }}></span>
-        </div>
 
-        {/* Desktop Links */}
-        <ul className="nav-links" style={{
-          display: 'flex',
-          gap: '2.5rem',
-          listStyle: 'none',
-        }}>
-          {navItems.map(({ label, id }) => (
-            <li key={id}>
-              <a onClick={() => scrollTo(id)} style={{
-                fontSize: 13, fontWeight: 600,
-                letterSpacing: '0.08em', textTransform: 'uppercase',
-                color: 'var(--muted)', textDecoration: 'none', cursor: 'pointer',
-              }}
-                onMouseEnter={e => e.target.style.color = 'var(--accent)'}
-                onMouseLeave={e => e.target.style.color = 'var(--muted)'}
-              >
-                {label}
-              </a>
-            </li>
+        <a
+          href="#home"
+          onClick={scrollToTop}
+          className={styles.logo}
+        >
+          <span className={styles.logoDot}></span>
+
+          <div>
+            <h3>Prasanna</h3>
+            <p>UI / UX Designer</p>
+          </div>
+        </a>
+
+        {/* Desktop Nav */}
+
+        <nav className={styles.desktopNav}>
+          {navItems.map((item) => (
+            <a
+              key={item.id}
+              href={`#${item.id}`}
+              onClick={(e) => scrollToSection(e, item.id)}
+              className={styles.navItem}
+            >
+              <span className={styles.navGlow}></span>
+              <span className={styles.navText}>{item.label}</span>
+              <span className={styles.navTextGradient}>{item.label}</span>
+            </a>
           ))}
-        </ul>
+        </nav>
 
-        {/* Desktop CTA + Mobile Hamburger */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <button
-            onClick={() => window.open('mailto:cprasannabalaji4@gmail.com')}
-            style={{
-              background: 'var(--accent)', color: '#fff',
-              padding: '9px 22px', borderRadius: 50,
-              fontSize: 12, fontWeight: 700,
-              letterSpacing: '0.08em', textTransform: 'uppercase',
-              border: 'none', cursor: 'pointer',
-            }}>
-            Hire Me ↗
-          </button>
+        {/* Right */}
 
-          {/* Hamburger — mobile only */}
+        <div className={styles.right}>
+          <div className={styles.contactGroup}>
+            <a
+              href={`tel:${CONTACT.phone}`}
+              className={styles.contactBtn}
+              aria-label="Call Prasanna"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              Call
+            </a>
+
+            <a
+              href={`mailto:${CONTACT.email}`}
+              className={styles.contactBtnFilled}
+              aria-label="Email Prasanna"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <path d="m22 6-10 7L2 6"/>
+              </svg>
+              Email
+            </a>
+          </div>
+
+          {/* Mobile Menu Button */}
+
           <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            style={{
-              display: 'none',
-              background: 'none', border: 'none',
-              cursor: 'pointer', padding: 4,
-              flexDirection: 'column', gap: 5,
-            }}
-            className="hamburger"
-            aria-label="Menu"
+            className={`${styles.menuBtn} ${menuOpen ? styles.open : ''}`}
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-label="Toggle Menu"
           >
-            <span style={{ display: 'block', width: 22, height: 2, background: 'var(--text)', borderRadius: 2, transition: 'all 0.3s', transform: menuOpen ? 'rotate(45deg) translateY(7px)' : 'none' }} />
-            <span style={{ display: 'block', width: 22, height: 2, background: 'var(--text)', borderRadius: 2, opacity: menuOpen ? 0 : 1, transition: 'all 0.2s' }} />
-            <span style={{ display: 'block', width: 22, height: 2, background: 'var(--text)', borderRadius: 2, transition: 'all 0.3s', transform: menuOpen ? 'rotate(-45deg) translateY(-7px)' : 'none' }} />
+            <span></span>
+            <span></span>
           </button>
         </div>
-      </nav>
+      </header>
 
-      {/* Mobile Menu Dropdown */}
-      {menuOpen && (
-        <div style={{
-          position: 'fixed', top: 60, left: 0, right: 0,
-          background: 'rgba(245,243,238,0.98)',
-          backdropFilter: 'blur(20px)',
-          borderBottom: '1px solid rgba(0,0,0,0.08)',
-          zIndex: 99, padding: '1.5rem',
-          display: 'flex', flexDirection: 'column', gap: 4,
-        }}>
-          {navItems.map(({ label, id }) => (
-            <button key={id} onClick={() => scrollTo(id)} style={{
-              background: 'none', border: 'none', cursor: 'pointer',
-              padding: '12px 16px', borderRadius: 12,
-              fontSize: 15, fontWeight: 700,
-              textAlign: 'left', color: 'var(--text)',
-              letterSpacing: '0.05em',
-            }}>
-              {label}
-            </button>
+      {/* Mobile Menu */}
+
+      <aside className={`${styles.mobileMenu} ${menuOpen ? styles.show : ''}`}>
+        <div className={styles.mobileInner}>
+          {navItems.map((item, index) => (
+            <a
+              key={item.id}
+              href={`#${item.id}`}
+              onClick={(e) => scrollToSection(e, item.id)}
+              className={styles.mobileLink}
+            >
+              <small>0{index + 1}</small>
+              <span>{item.label}</span>
+              <strong>↗</strong>
+            </a>
           ))}
-          <button
-            onClick={() => window.open('mailto:cprasannabalaji4@gmail.com')}
-            style={{
-              marginTop: 8, background: 'var(--accent)', color: '#fff',
-              padding: '12px 16px', borderRadius: 12,
-              fontSize: 14, fontWeight: 700, border: 'none', cursor: 'pointer',
-            }}>
-            Hire Me ↗
-          </button>
-        </div>
-      )}
 
-      {/* Hamburger show on mobile */}
-      <style>{`
-        @media (max-width: 768px) {
-          .hamburger { display: flex !important; }
-          .nav-links { display: none !important; }
-          .nav-wrap { padding: 1rem 1.2rem !important; }
-        }
-      `}</style>
+          <div className={styles.mobileContactRow}>
+            <a
+              href={`tel:${CONTACT.phone}`}
+              className={styles.mobileContactBtn}
+            >
+              Call
+            </a>
+
+            <a
+              href={`mailto:${CONTACT.email}`}
+              className={styles.mobileContactBtnFilled}
+            >
+              Email
+            </a>
+          </div>
+        </div>
+      </aside>
     </>
   )
 }

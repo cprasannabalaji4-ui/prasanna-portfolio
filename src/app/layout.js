@@ -9,7 +9,7 @@ const syne = Syne({
 
 export const metadata = {
   title: 'Prasanna Balaji C — UI/UX Designer',
-  description: 'UI/UX Designer & Developer from Erode, TN',
+  description: 'UI/UX Designer & Developer from Chennai, TN',
 }
 
 export default function RootLayout({ children }) {

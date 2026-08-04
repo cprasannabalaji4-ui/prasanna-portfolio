@@ -1,225 +1,264 @@
+'use client'
+
+import styles from './About.module.css'
+
 export default function About() {
+  const achievements = [
+    {
+      number: '06+',
+      label: 'Projects Completed',
+      desc: 'Real-world UI/UX & Frontend Projects',
+      icon: '✦',
+    },
+    {
+      number: '02',
+      label: 'Internships',
+      desc: 'Industry Experience',
+      icon: '◉',
+    },
+    {
+      number: '2025',
+      label: 'Graduate',
+      desc: 'B.E Computer Science',
+      icon: '▲',
+    },
+  ]
+
+  const education = [
+    {
+      year: '2021 — 2025',
+      title: 'B.E Computer Science & Engineering',
+      college: 'Indra Ganesan College of Engineering',
+      score: 'CGPA 8.0',
+    },
+    {
+      year: '2019 — 2021',
+      title: 'Higher Secondary Education',
+      college: "Govt. Boys Higher Secondary School",
+      score: '80%',
+    },
+    {
+      year: '2018 — 2019',
+      title: 'Secondary School Education',
+      college: "St. Antony's Higher Secondary School",
+      score: '65%',
+    },
+  ]
+
+  const skills = [
+    'Figma',
+    'UI Design',
+    'UX Research',
+    'Wireframing',
+    'Prototype',
+    'React',
+    'Next.js',
+    'Tailwind CSS',
+    'JavaScript',
+    'HTML',
+    'CSS',
+    'Git',
+  ]
+
   return (
-    <section
-      id="about"
-      className="section-wrap"
-      style={{
-        padding: "5rem 3.5rem",
-        maxWidth: 1100,
-        margin: "0 auto",
-      }}
-    >
-      <div
-        style={{
-          fontSize: 10,
-          fontWeight: 700,
-          letterSpacing: "0.25em",
-          textTransform: "uppercase",
-          color: "var(--accent)",
-          marginBottom: "0.5rem",
-        }}
-      >
-        01 — About
-      </div>
+    <section id="about" className={styles.about}>
+      {/* Aurora Background */}
+      <div className={`${styles.aurora} ${styles.aurora1}`}></div>
+      <div className={`${styles.aurora} ${styles.aurora2}`}></div>
+      <div className={styles.noise}></div>
 
-      <h2
-        style={{
-          fontFamily: "Syne, sans-serif",
-          fontSize: 48,
-          fontWeight: 800,
-          letterSpacing: "-2px",
-          color: "var(--text)",
-          lineHeight: 1,
-          marginBottom: "3rem",
-        }}
-      >
-        Designer who <span style={{ color: "var(--accent)" }}>Codes</span>
-      </h2>
+      <div className={styles.container}>
+        {/* Header */}
+        <div className={styles.sectionTop}>
+          <span className={styles.sectionTag}>ABOUT ME</span>
 
-      <div
-        className="about-grid"
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1.2fr 0.8fr",
-          gap: "3rem",
-          alignItems: "start",
-        }}
-      >
-        {/* Left — Bio + Education */}
-        <div
-          style={{
-            background: "var(--white)",
-            borderRadius: 28,
-            padding: "2.5rem",
-            boxShadow:
-              "8px 8px 24px rgba(0,0,0,0.12), -6px -6px 18px rgba(255,255,255,0.95)",
-          }}
-        >
-          <p
-            style={{
-              fontSize: 15,
-              lineHeight: 1.9,
-              color: "var(--muted)",
-              marginBottom: "2rem",
-            }}
-          >
-            Hi — I am{" "}
-            <strong style={{ color: "var(--text)" }}>
-              Prasanna Balaji C
-            </strong>
-            , a passionate UI/UX designer with a strong foundation in
-            user-centered design principles. I love bringing creative ideas to
-            life — designing to inspire positivity in every viewer.
+          <h2 className={styles.title}>
+            Designing
+            <span> Meaningful Experiences</span>
             <br />
-            <br />
-            With additional expertise in{" "}
-            <strong style={{ color: "var(--text)" }}>
-              full-stack development
-            </strong>
-            , I combine creativity and technology to deliver scalable,
-            user-focused applications. Fresh B.E graduate from{" "}
-            <strong style={{ color: "var(--text)" }}>
-              Indra Ganesan College
-            </strong>
-            , Manikandam — currently available for full-time or freelance
-            opportunities.
+            Beyond Beautiful Interfaces.
+          </h2>
+
+          <p className={styles.subtitle}>
+            I&apos;m
+            <strong> Prasanna Balaji </strong>
+            — a passionate UI/UX Designer and Frontend Developer
+            who loves crafting modern digital products with
+            elegant experiences, thoughtful interactions and
+            pixel-perfect interfaces.
           </p>
-
-          {[
-            {
-              deg: "B.E Computer Science & Engineering",
-              school: "Indra Ganesan College, Manikandam",
-              yr: "2021–25 · 80%",
-            },
-            {
-              deg: "12th Standard",
-              school: "Govt. Boy's Hr Sec School, Manapparai",
-              yr: "2019–21 · 80%",
-            },
-            {
-              deg: "10th Standard",
-              school: "St Antony's Hr Sec School, Manapparai",
-              yr: "2018–19 · 65%",
-            },
-          ].map((e, i) => (
-            <div
-              key={i}
-              style={{
-                background: "var(--bg)",
-                borderRadius: 14,
-                padding: "13px 18px",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                marginBottom: 10,
-                boxShadow:
-                  "3px 3px 10px rgba(0,0,0,0.1), -3px -3px 8px rgba(255,255,255,0.95)",
-              }}
-            >
-              <div>
-                <div
-                  style={{
-                    fontSize: 13,
-                    fontWeight: 700,
-                    color: "var(--text)",
-                  }}
-                >
-                  {e.deg}
-                </div>
-
-                <div
-                  style={{
-                    fontSize: 11,
-                    color: "var(--hint)",
-                    marginTop: 2,
-                  }}
-                >
-                  {e.school}
-                </div>
-              </div>
-
-              <div
-                style={{
-                  fontSize: 10,
-                  fontWeight: 700,
-                  color: "var(--accent)",
-                  background: "rgba(91,79,232,0.08)",
-                  padding: "5px 12px",
-                  borderRadius: 50,
-                  whiteSpace: "nowrap",
-                }}
-              >
-                {e.yr}
-              </div>
-            </div>
-          ))}
         </div>
 
-        {/* Right — Stats */}
-        <div
-          className="stats-col"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: 14,
-          }}
-        >
-          {[
-            { n: "6+", l: "Projects Done" },
-            { n: "2", l: "Internships" },
-            { n: "7+", l: "Certificates" },
-          ].map(({ n, l }) => (
-            <div
-              className="stat-card-wrap"
-              key={l}
-              style={{
-                background: "var(--white)",
-                borderRadius: 20,
-                padding: "1.5rem",
-                textAlign: "center",
-                boxShadow:
-                  "6px 6px 18px rgba(0,0,0,0.12), -4px -4px 14px rgba(255,255,255,0.95)",
-              }}
-            >
-              <div
-                style={{
-                  fontFamily: "Syne, sans-serif",
-                  fontSize: 40,
-                  fontWeight: 800,
-                  color: "var(--accent)",
-                  lineHeight: 1,
-                }}
-              >
-                {n}
-              </div>
+        {/* Main Grid */}
+        <div className={styles.aboutGrid}>
+          {/* Left */}
+          <div className={styles.aboutLeft}>
+            <div className={styles.glassCard}>
+              <span className={styles.smallTitle}>WHO AM I</span>
 
-              <div
-                style={{
-                  fontSize: 11,
-                  fontWeight: 600,
-                  letterSpacing: "0.12em",
-                  textTransform: "uppercase",
-                  color: "var(--hint)",
-                  marginTop: 6,
-                }}
-              >
-                {l}
-              </div>
+              <h3>
+                Turning ideas into
+                premium digital
+                experiences.
+              </h3>
 
-              <div
-                style={{
-                  height: 3,
-                  borderRadius: 50,
-                  background:
-                    "linear-gradient(90deg,var(--accent),var(--accent2))",
-                  marginTop: 12,
-                  opacity: 0.3,
-                }}
-              />
+              <p>
+                I specialize in creating intuitive user
+                interfaces that combine modern aesthetics
+                with functional usability.
+              </p>
+
+              <p>
+                My workflow starts from research,
+                wireframes and prototypes inside
+                Figma, then transforms into
+                responsive websites using
+                React, Next.js and modern
+                frontend technologies.
+              </p>
+
+              <div className={styles.infoList}>
+                <div className={styles.infoItem}>
+                  <span>📍</span>
+                  Chennai, Tamil Nadu
+                </div>
+
+                <div className={styles.infoItem}>
+                  <span>💼</span>
+                  Open for UI/UX Opportunities
+                </div>
+
+                <div className={styles.infoItem}>
+                  <span>⚡</span>
+                  Immediate Joiner
+                </div>
+              </div>
             </div>
-          ))}
+          </div>
+
+          {/* Right */}
+          <div className={styles.aboutRight}>
+            {achievements.map((item) => (
+              <div key={item.label} className={styles.statCard}>
+                <div className={styles.statIcon}>{item.icon}</div>
+
+                <div>
+                  <h3>{item.number}</h3>
+                  <h4>{item.label}</h4>
+                  <p>{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ===============================
+            SKILLS SHOWCASE
+        =============================== */}
+        <div className={styles.skillsSection}>
+          <div className={styles.sectionHead}>
+            <span className={styles.sectionNumber}>01</span>
+            <h3>Core Expertise</h3>
+          </div>
+
+          <div className={styles.skillsWrapper}>
+            {skills.map((skill) => (
+              <div key={skill} className={styles.skillPill}>
+                <span className={styles.skillDot}></span>
+                {skill}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ===============================
+            EDUCATION
+        =============================== */}
+        <div className={styles.educationSection}>
+          <div className={styles.sectionHead}>
+            <span className={styles.sectionNumber}>02</span>
+            <h3>Education Journey</h3>
+          </div>
+
+          <div className={styles.timeline}>
+            {education.map((item) => (
+              <div key={item.year} className={styles.timelineItem}>
+                <div className={styles.timelineLeft}>
+                  <span className={styles.timelineYear}>{item.year}</span>
+                </div>
+
+                <div className={styles.timelineDot}></div>
+
+                <div className={styles.timelineCard}>
+                  <h4>{item.title}</h4>
+                  <p>{item.college}</p>
+                  <span className={styles.timelineScore}>{item.score}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ===============================
+            DESIGN PHILOSOPHY
+        =============================== */}
+        <div className={styles.philosophy}>
+          <div className={`${styles.glassCard} ${styles.philosophyCard}`}>
+            <span className={styles.smallTitle}>DESIGN PHILOSOPHY</span>
+
+            <h3>Good design should feel invisible.</h3>
+
+            <p>
+              Every interface should guide users
+              naturally without making them think.
+              I focus on accessibility, usability,
+              consistency and delightful
+              micro-interactions to build products
+              people genuinely enjoy using.
+            </p>
+          </div>
+        </div>
+
+        {/* ===============================
+            LET'S BUILD
+        =============================== */}
+        <div className={styles.ctaSection}>
+          <div className={styles.ctaCard}>
+            <span className={styles.smallTitle}>LET&apos;S CONNECT</span>
+
+            <h2>
+              Building digital
+              products that people
+              remember.
+            </h2>
+
+            <p>
+              I&apos;m currently looking for UI/UX Design
+              opportunities where I can contribute,
+              learn and create meaningful digital
+              experiences with passionate teams.
+            </p>
+
+            <div className={styles.ctaButtons}>
+              <a
+                href="mailto:cprasannabalaji4@gmail.com"
+                className={styles.primaryBtn}
+              >
+                Hire Me ↗
+              </a>
+
+              <a
+                href="https://www.behance.net/prasannabalajic"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.secondaryBtn}
+              >
+                Behance ↗
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
-  );
+  )
 }

@@ -1,188 +1,231 @@
 'use client'
+
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
+import styles from './Hero.module.css'
+
+const techStack = [
+  'Figma',
+  'React',
+  'Next.js',
+  'Tailwind',
+  'Framer',
+]
 
 export default function Hero() {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true)
+  }, [])
+
+  /* ===========================
+      Scroll To Projects
+  =========================== */
+
+  const scrollToProjects = (e) => {
+    e.preventDefault()
+
+    const section = document.getElementById('projects')
+
+    if (!section) {
+      console.log('Projects section not found')
+      return
+    }
+
+    const navbarHeight = 90
+
+    const top =
+      section.getBoundingClientRect().top +
+      window.pageYOffset -
+      navbarHeight
+
+    window.scrollTo({
+      top,
+      behavior: 'smooth',
+    })
+  }
+
   return (
-    <>
-      <section className="hero-grid" style={{
-        minHeight: '92vh',
-        display: 'grid',
-        gridTemplateColumns: '1.1fr 0.9fr',
-        position: 'relative',
-        background: 'var(--bg)',
-        overflow: 'hidden',
-      }}>
+    <section id="home" className={styles.hero}>
+
+      {/* Background */}
+
+      <div className={styles.grid}></div>
+
+      <div className={styles.glowOne}></div>
+
+      <div className={styles.glowTwo}></div>
+
+      <div className={styles.glowThree}></div>
+
+      <div className={styles.container}>
+
         {/* LEFT */}
-        <div className="hero-left" style={{
-          padding: '5rem 3rem 4rem 3.5rem',
-          display: 'flex', flexDirection: 'column', justifyContent: 'center',
-        }}>
-          {/* Badge */}
-          <div style={{
-            display: 'inline-flex', alignItems: 'center', gap: 8,
-            background: 'rgba(91,79,232,0.08)',
-            border: '1.5px solid rgba(91,79,232,0.2)',
-            padding: '7px 18px', borderRadius: 50,
-            fontSize: 11, fontWeight: 700,
-            letterSpacing: '0.15em', textTransform: 'uppercase',
-            color: 'var(--accent)', marginBottom: '2rem', width: 'fit-content',
-          }}>
-            <div style={{
-              width: 6, height: 6, borderRadius: '50%',
-              background: '#1DB87A', boxShadow: '0 0 6px #1DB87A',
-              animation: 'pulse 2s infinite',
-            }} />
-            Available for work
+
+        <div className={styles.left}>
+
+          <div className={styles.badge}>
+            <span className={styles.dot}></span>
+            Available for Full Time
           </div>
 
-          {/* Name */}
-          <h1 className="hero-h1" style={{
-            fontFamily: 'Syne, sans-serif',
-            fontSize: 72, fontWeight: 800,
-            lineHeight: 0.88, letterSpacing: '-3px', marginBottom: '1.5rem',
-          }}>
-            <div style={{ color: 'var(--text)' }}>PRASANNA</div>
-            <div style={{ color: 'var(--accent)' }}>BALAJI</div>
-            <div style={{ color: 'var(--accent2)' }}>C</div>
+          <h1 className={styles.title}>
+            Crafting
+            <span> Premium </span>
+            Digital
+            <br />
+            Experiences.
           </h1>
 
-          {/* Desc */}
-          <p style={{
-            fontSize: 16, color: 'var(--muted)',
-            lineHeight: 1.8, maxWidth: 420, marginBottom: '2.5rem',
-          }}>
-            UI/UX Designer & Part-time Developer from{' '}
-            <strong style={{ color: 'var(--text)' }}>Chennai, TN</strong> I craft{' '}
-            <strong style={{ color: 'var(--text)' }}>bold, user-centered</strong>{' '}
-            experiences — Figma to production.
+          <p className={styles.desc}>
+            Hi, I&apos;m
+            <strong> Prasanna Balaji </strong>
+            — UI / UX Designer and Frontend Developer
+            who creates premium interfaces,
+            meaningful user experiences
+            and high-performance web applications.
           </p>
 
           {/* Buttons */}
-          <div className="hero-btns" style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: '3.5rem' }}>
-            <button
-              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-              style={{
-                padding: '14px 32px', borderRadius: 50,
-                fontSize: 13, fontWeight: 700,
-                letterSpacing: '0.08em', textTransform: 'uppercase',
-                cursor: 'pointer', background: 'var(--accent)',
-                color: '#fff', border: 'none',
-                boxShadow: '0 8px 24px rgba(91,79,232,0.3)',
-              }}>
-              View My Work →
-            </button>
-            <button
-              onClick={() => window.open('https://www.behance.net/prasannabalajic')}
-              style={{
-                padding: '14px 32px', borderRadius: 50,
-                fontSize: 13, fontWeight: 700,
-                letterSpacing: '0.08em', textTransform: 'uppercase',
-                cursor: 'pointer', background: 'transparent',
-                color: 'var(--text)', border: '2px solid rgba(0,0,0,0.15)',
-              }}>
-              Behance ↗
-            </button>
+
+          <div className={styles.actions}>
+
+            <a
+              href="#projects"
+              onClick={scrollToProjects}
+              className={styles.primaryBtn}
+            >
+              Explore Projects
+              <span>↗</span>
+            </a>
+
+            <a
+              href="https://www.behance.net/prasannabalajic"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.secondaryBtn}
+            >
+              Behance
+              <span>↗</span>
+            </a>
+
+          </div>
+
+          {/* Tech Stack */}
+
+          <div className={styles.techRow}>
+
+            {techStack.map((tech) => (
+
+              <div
+                key={tech}
+                className={styles.tech}
+              >
+                {tech}
+              </div>
+
+            ))}
+
           </div>
 
           {/* Stats */}
-          <div className="hero-stats" style={{ display: 'flex', gap: '1.5rem' }}>
-            {[['6+', 'Projects'], ['2', 'Internships'], ['7+', 'Certs']].map(([n, l]) => (
-              <div key={l} style={{
-                background: 'var(--white)', borderRadius: 16,
-                padding: '1.2rem 1.5rem', textAlign: 'center',
-                boxShadow: '6px 6px 16px rgba(0,0,0,0.12),-4px -4px 12px rgba(255,255,255,0.95)',
-              }}>
-                <div style={{ fontFamily: 'Syne, sans-serif', fontSize: 30, fontWeight: 800, color: 'var(--accent)' }}>{n}</div>
-                <div style={{ fontSize: 11, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--hint)', marginTop: 4 }}>{l}</div>
-              </div>
-            ))}
+
+          <div className={styles.stats}>
+
+            <div>
+
+              <h2>
+                {mounted ? '10+' : '10+'}
+              </h2>
+
+              <span>
+                Projects
+              </span>
+
+            </div>
+
+            <div>
+
+              <h2>
+                {mounted ? '02' : '02'}
+              </h2>
+
+              <span>
+                Internships
+              </span>
+
+            </div>
+
           </div>
+
+        </div>
+                {/* RIGHT */}
+
+        <div className={styles.right}>
+
+          <div className={styles.photoWrap}>
+
+            <div className={styles.photoGlow}></div>
+
+            <Image
+              src="/photo.png"
+              alt="Prasanna Balaji"
+              width={650}
+              height={820}
+              priority
+              className={styles.photo}
+            />
+
+            <div className={styles.overlay}></div>
+
+          </div>
+
+          {/* Floating Card */}
+
+          <div
+            className={`${styles.card} ${styles.cardTop}`}
+          >
+            <small>
+              Focus
+            </small>
+
+            <strong>
+              UI / UX Design
+            </strong>
+          </div>
+
+          <div
+            className={`${styles.card} ${styles.cardBottom}`}
+          >
+            <small>
+              Based in
+            </small>
+
+            <strong>
+              Chennai, India
+            </strong>
+          </div>
+
+          {/* Orbit */}
+
+          <div className={styles.orbit}></div>
+
         </div>
 
-        {/* RIGHT — Photo */}
-        <div className="hero-right" style={{
-          position: 'relative',
-          background: 'linear-gradient(135deg,#EDE8FF 0%,#F5F3EE 60%,#FFE8F0 100%)',
-          display: 'flex', alignItems: 'flex-end', justifyContent: 'center',
-          overflow: 'hidden',
-        }}>
-          <div style={{ position: 'absolute', borderRadius: '50%', width: 300, height: 300, top: -80, right: -80, background: 'rgba(91,79,232,0.08)', pointerEvents: 'none' }} />
-          <div style={{ position: 'absolute', borderRadius: '50%', width: 200, height: 200, bottom: 80, right: 20, background: 'rgba(232,91,138,0.08)', pointerEvents: 'none' }} />
+      </div>
 
-          <Image
-            src="/photo.png"
-            alt="Prasanna Balaji C"
-            width={480} height={640}
-            priority
-            className="hero-photo"
-            style={{
-              objectFit: 'cover', objectPosition: 'top center',
-              height: '82vh', width: 'auto', position: 'relative', zIndex: 2,
-            }}
-          />
+      {/* Scroll Indicator */}
 
-          {/* Float chips */}
-          <div className="float-chip" style={{
-            position: 'absolute', top: '18%', left: '5%', zIndex: 3,
-            background: 'rgba(255,255,255,0.75)', backdropFilter: 'blur(16px)',
-            border: '1px solid rgba(255,255,255,0.9)',
-            borderRadius: 14, padding: '12px 18px',
-            boxShadow: '0 8px 24px rgba(0,0,0,0.08)',
-            animation: 'float 4s ease-in-out infinite',
-          }}>
-            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--hint)' }}>Degree</div>
-            <div style={{ fontSize: 15, fontWeight: 800, color: 'var(--text)', fontFamily: 'Syne, sans-serif', marginTop: 2 }}>B.E CSE</div>
-            <div style={{ fontSize: 11, color: 'var(--accent)', fontWeight: 600, marginTop: 1 }}>80% · 2025</div>
-          </div>
+      <div className={styles.scroll}>
 
-          <div className="float-chip" style={{
-            position: 'absolute', bottom: '28%', left: '5%', zIndex: 3,
-            background: 'rgba(255,255,255,0.75)', backdropFilter: 'blur(16px)',
-            border: '1px solid rgba(255,255,255,0.9)',
-            borderRadius: 14, padding: '12px 18px',
-            boxShadow: '0 8px 24px rgba(0,0,0,0.08)',
-            animation: 'float 4s ease-in-out infinite 2s',
-          }}>
-            <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--hint)' }}>Tools</div>
-            <div style={{ fontSize: 15, fontWeight: 800, color: 'var(--text)', fontFamily: 'Syne, sans-serif', marginTop: 2 }}>Figma · Framer</div>
-            <div style={{ fontSize: 11, color: 'var(--accent)', fontWeight: 600, marginTop: 1 }}>+ VS Code, Notion</div>
-          </div>
-        </div>
-      </section>
+        <span>
+          Scroll Down
+        </span>
 
-      <style>{`
-        @media (max-width: 768px) {
-          .hero-grid {
-            grid-template-columns: 1fr !important;
-            min-height: auto !important;
-          }
-          .hero-right {
-            order: 1;
-            height: 340px !important;
-            min-height: unset !important;
-          }
-          .hero-photo {
-            height: 340px !important;
-            width: 100% !important;
-            object-fit: cover !important;
-          }
-          .hero-left {
-            order: 2;
-            padding: 2.5rem 1.5rem 2rem !important;
-          }
-          .hero-h1 {
-            font-size: 44px !important;
-            letter-spacing: -2px !important;
-          }
-          .float-chip { display: none !important; }
-          .hero-btns { flex-direction: column !important; }
-          .hero-btns button { width: 100% !important; }
-          .hero-stats { gap: 10px !important; }
-        }
-        @media (max-width: 400px) {
-          .hero-h1 { font-size: 36px !important; }
-        }
-      `}</style>
-    </>
+      </div>
+
+    </section>
   )
 }

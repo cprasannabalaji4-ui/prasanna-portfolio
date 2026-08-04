@@ -1,3 +1,5 @@
+// page.js server component — no 'use client' needed here
+// But all interactive components must have 'use client'
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
 import Marquee from '@/components/Marquee'
