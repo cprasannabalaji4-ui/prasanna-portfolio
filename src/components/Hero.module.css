@@ -598,11 +598,8 @@ RESPONSIVE
 
 .primaryBtn,
 .secondaryBtn{
-    display:inline-flex;
-    align-items:center;
+    width:100%;
     justify-content:center;
-    text-decoration:none;
-    color:inherit;
 }
 
 .stats{

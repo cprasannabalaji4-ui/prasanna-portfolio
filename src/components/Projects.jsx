@@ -2,6 +2,12 @@
 
 import Image from 'next/image'
 import styles from './Projects.module.css'
+import {
+  FaFigma,
+  FaReact,
+  FaNodeJs,
+  FaGithub,
+} from 'react-icons/fa'
 
 const projects = [
   {
@@ -11,7 +17,8 @@ const projects = [
     year: '2026',
     image: '/projects/project1.png',
     tags: ['Research', 'Wireframe', 'Prototype', 'Figma'],
-    figma: 'https://www.figma.com/@prasannabalajic',
+    icon: <FaFigma />,
+    figma: 'https://www.figma.com/design/jVCMsZotLHbIxWXAo5PtFA/Prasanna-Balaji?node-id=0-1&t=jcQu5TenT8XYm6h9-1',
     live: 'https://www.thulirenterprises.co.in/',
   },
   {
@@ -21,7 +28,8 @@ const projects = [
     year: '2026',
     image: '/projects/project2.png',
     tags: ['Design System', 'UX', 'Web App'],
-    figma: 'https://www.figma.com/@prasannabalajic',
+    icon: <FaFigma />,
+    figma: 'https://www.figma.com/design/jVCMsZotLHbIxWXAo5PtFA/Prasanna-Balaji?node-id=409-115&t=jcQu5TenT8XYm6h9-1',
     live: 'https://www.behance.net/prasannabalajic',
   },
   {
@@ -31,7 +39,8 @@ const projects = [
     year: '2026',
     image: '/projects/project3.png',
     tags: ['Mobile', 'Prototype', 'UI Kit'],
-    figma: 'https://www.figma.com/@prasannabalajic',
+    icon: <FaFigma />,
+    figma: 'https://www.figma.com/design/jVCMsZotLHbIxWXAo5PtFA/Prasanna-Balaji?node-id=182-2&t=jcQu5TenT8XYm6h9-1',
     live: 'https://www.behance.net/prasannabalajic',
   },
   {
@@ -41,7 +50,8 @@ const projects = [
     year: '2026',
     image: '/projects/project4.png',
     tags: ['Mobile', 'Prototype', 'UI Kit'],
-    figma: 'https://www.figma.com/@prasannabalajic',
+    icon: <FaFigma />,
+    figma: 'https://www.figma.com/design/jVCMsZotLHbIxWXAo5PtFA/Prasanna-Balaji?node-id=182-2&t=jcQu5TenT8XYm6h9-1',
     live: 'https://www.behance.net/prasannabalajic',
   },
   {
@@ -51,7 +61,8 @@ const projects = [
     year: '2026',
     image: '/projects/project5.png',
     tags: ['Mobile', 'Prototype', 'UI Kit'],
-    figma: 'https://www.figma.com/@prasannabalajic',
+    icon: <FaFigma />,
+    figma: 'https://www.figma.com/design/jVCMsZotLHbIxWXAo5PtFA/Prasanna-Balaji?node-id=182-2&t=jcQu5TenT8XYm6h9-1',
     live: 'https://www.behance.net/prasannabalajic',
   },
   {
@@ -61,7 +72,8 @@ const projects = [
     year: '2026',
     image: '/projects/project6.png',
     tags: ['Mobile', 'Prototype', 'UI Kit'],
-    figma: 'https://www.figma.com/@prasannabalajic',
+    icon: <FaFigma />,
+    figma: 'https://www.figma.com/design/jVCMsZotLHbIxWXAo5PtFA/Prasanna-Balaji?node-id=182-2&t=jcQu5TenT8XYm6h9-1',
     live: 'https://www.behance.net/prasannabalajic',
   },
 ]
