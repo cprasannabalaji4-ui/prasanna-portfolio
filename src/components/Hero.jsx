@@ -170,7 +170,7 @@ export default function Hero() {
             <div className={styles.photoGlow}></div>
 
             <Image
-              src="/photo.png"
+              src="/photo-1.jpeg"
               alt="Prasanna Balaji"
               width={650}
               height={820}
